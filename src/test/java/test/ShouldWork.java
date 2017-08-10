@@ -44,6 +44,13 @@ public class ShouldWork {
         });
     }
 
+    @Test
+    public void simplyThrow(TestContext ctx) throws Exception {
+        Async async = ctx.async();
+        throw new RuntimeException("ouch");
+        //async.complete();
+    }
+
     private HttpClient client() {
         final HttpClientOptions opts = new HttpClientOptions().setDefaultPort(PORT);
         return vertx.createHttpClient(opts);
